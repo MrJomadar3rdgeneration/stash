@@ -45,9 +45,8 @@ Stash is a native macOS clipboard manager that remembers what you copy and makes
 2. Move **Stash.app** into **Applications**. Quit an older copy before replacing it.
 3. Open Stash, then enable **Settings → Launch at login** if you want it available after every restart.
 
-**First launch:** the download is ad-hoc signed, not Developer ID signed or notarized. macOS may require your approval before opening it. If it is blocked, review the app in **System Settings → Privacy & Security** and use **Open Anyway** only if you trust this download. Do not disable Gatekeeper. Complete any Stash Keychain prompt yourself. [Apple’s first-launch instructions](https://support.apple.com/en-gb/102445).
+**First launch:** the download is ad-hoc signed, not Developer ID signed or notarized. macOS may require your approval before opening it. If it is blocked, review the app in **System Settings → Privacy & Security** and use **Open Anyway**. Complete any Stash Keychain prompt yourself.
 
-The downloaded build has passed automated checks on macOS 15, with local UI testing on Apple Silicon. Testing across all supported macOS versions and destination apps is ongoing. Intel users can [build from source](#build-from-source); Intel runtime behavior has not been verified.
 
 ### Install with Homebrew
 
