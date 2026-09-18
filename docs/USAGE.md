@@ -95,9 +95,4 @@ File clips store references, not archived file contents. Moving or deleting the 
 
 If you file a bug, use fictional content and redact screenshots. Never upload clipboard history, Keychain exports, or credentials.
 
-## Battery and memory
-
-Idle resource use should be evaluated against your workload. One local 31-second observation with three small clips showed approximately **35 MB RAM** and **0.0% displayed CPU** at the sampling tool's precision. This does not mean zero power use or establish a battery-per-hour percentage.
-
-Stash checks for clipboard changes about every **0.5 seconds**, or **1 second in Low Power Mode**, with timer tolerance to combine wake-ups. Polling stops while paused, asleep, or in an inactive login session. It holds no keep-awake assertion. Large images, long text, frequent copying, and large histories require more work; history is decoded into RAM. See [ENERGY.md](../ENERGY.md) for measurement details and limits.
 
