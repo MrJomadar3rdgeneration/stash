@@ -1,8 +1,8 @@
 # Release readiness
 
-## Current target: public source beta, not a general-release binary
+## Current distribution: source and Apple Silicon app download
 
-The repository can be shared as an early source beta after local checks complete. It must not be described as universally compatible, independently security-audited, or a notarized production release.
+The repository includes a downloadable ad-hoc-signed app and a Homebrew tap. Signing and compatibility limitations are documented. It must not be described as universally compatible, independently security-audited, or notarized.
 
 Before uploading source:
 
@@ -15,6 +15,7 @@ Before uploading source:
 - [x] Reporter confirmed the menu-bar icon is visible after updating.
 - [x] Prepare the public source repository at `MrJomadar3rdgeneration/stash` under MIT.
 - [x] Publish source, pass GitHub CI, and enable private vulnerability reporting.
+- [x] Publish a checksum-verified app download and test the Homebrew cask installation.
 
 Before recommending a binary release to non-developers:
 

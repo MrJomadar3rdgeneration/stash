@@ -1,185 +1,153 @@
-<p align="center"><img src="docs/stash-icon.png" width="96" height="96" alt="Stash icon"></p>
+<p align="center">
+  <img src="docs/stash-icon.png" width="96" height="96" alt="Stash icon">
+</p>
+<h1 align="center">Stash</h1>
+<p align="center"><strong>Your clipboard, with a memory.</strong></p>
+<p align="center">Copy something. Find it later. Keep moving.</p>
+<p align="center">
+  <a href="https://github.com/MrJomadar3rdgeneration/stash/releases/latest">Download for Mac</a> ·
+  <a href="#install-with-homebrew">Homebrew</a> ·
+  <a href="docs/USAGE.md">User guide</a> ·
+  <a href="https://github.com/MrJomadar3rdgeneration/stash/issues">Report a bug</a>
+</p>
+<p align="center">
+  <a href="https://github.com/MrJomadar3rdgeneration/stash/actions/workflows/ci.yml"><img src="https://github.com/MrJomadar3rdgeneration/stash/actions/workflows/ci.yml/badge.svg" alt="macOS build and checks"></a>
+  <img src="https://img.shields.io/badge/macOS-14%2B-181c1e" alt="macOS 14 or later">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-a0dfc0" alt="MIT license"></a>
+</p>
 
-# Stash
+Stash is a native macOS clipboard manager that remembers what you copy and makes it easy to find again. Save a useful link, recover a paragraph, or keep a reply template close at hand—all from a quiet menu-bar app, with your history encrypted on your Mac.
 
-**A quiet, keyboard-first clipboard manager for your Mac.**
+No account. No analytics. No cloud service. Built with SwiftUI and AppKit, using Apple frameworks only.
 
-Stash remembers what you copy, helps you find it again, and keeps your history encrypted on your Mac. Built with SwiftUI and AppKit, with no account, analytics, cloud service, or third-party dependencies.
+![Stash showing clipboard history, format filters, and a text preview](docs/stash-overview.png)
+*The real Stash interface, shown with fictional sample clips.*
 
-> **Early source beta · v0.3.0**
-> Tested locally on Apple Silicon. The app targets macOS 14+, but the full macOS, hardware, and destination-app compatibility matrix is not yet verified. There is no notarized public binary or automatic updater yet. See [release readiness](RELEASE_CHECKLIST.md).
+## A little less searching, a little more flow
 
-## Features
-
-- **Automatic history:** capture text, links, rich HTML/RTF, PNG/TIFF images, and file references from the system clipboard.
-- **Keyboard-first access:** a customizable global shortcut, instant search, and arrow-key navigation.
-- **Useful organization:** format filters, previews, permanent pins, individual deletion, and clear-history controls.
-- **Editable snippets:** edit saved text directly; edited clips are saved as plain text.
-- **Local privacy:** AES-GCM encrypted history, a Keychain-held key, app exclusions, confidential-content filtering, and capture pause.
-- **Mac integration:** a menu-bar icon, quiet launch at login, and optional direct paste to the previous app.
-
-## Requirements
-
-| Requirement | Details |
+| Feature | What it does |
 | --- | --- |
-| Operating system | macOS 14 or later |
-| Build tools | Swift 6 or later; Xcode 16+ or compatible Apple Command Line Tools |
-| Architecture | Builds for the current Mac; the script does not produce a universal binary |
-| Dependencies | Apple frameworks only; no external package downloads |
+| Automatic history | Remembers new copies from the macOS system clipboard while Stash is running. |
+| Instant search | Filters your history as you type, with case- and accent-insensitive matching. |
+| More than text | Saves plain text, HTML/RTF, links, PNG/TIFF images, and file references. |
+| Keyboard access | Opens with a customizable global shortcut; navigate and copy without the mouse. |
+| Pins and editing | Keeps favorite snippets through automatic cleanup and lets you edit saved text. |
+| Local privacy | Encrypts history with AES-GCM and keeps the encryption key in your login Keychain. |
+| Everyday controls | Pause capture, exclude apps, delete individual clips, or clear history. |
+| Ready after login | Starts quietly when you sign into your Mac, if you enable Launch at login. |
 
-The current local build has been checked on Apple Silicon. Intel and older supported macOS versions still need real-machine verification.
+## Download and install
 
-## Install from source
+### Download the app
 
-1. Install compatible Apple development tools. Check that `swift --version` reports Swift 6 or later. If Command Line Tools are missing, run `xcode-select --install` and follow Apple's installer.
-2. Download this repository using **Code → Download ZIP**, or clone it:
+**[Download Stash for Apple Silicon](https://github.com/MrJomadar3rdgeneration/stash/releases/download/v0.3.0/Stash-0.3.0-arm64.zip)** · [All releases](https://github.com/MrJomadar3rdgeneration/stash/releases)
 
-   ```sh
-   git clone https://github.com/MrJomadar3rdgeneration/stash.git
-   cd stash
-   ```
+1. Download and unzip the app. The download supports **Apple Silicon Macs (M1 or later), macOS 14+**.
+2. Move **Stash.app** into **Applications**. Quit an older copy before replacing it.
+3. Open Stash, then enable **Settings → Launch at login** if you want it available after every restart.
 
-3. Run the checks and build the app:
+**First launch:** the download is ad-hoc signed, not Developer ID signed or notarized. macOS may require your approval before opening it. If it is blocked, review the app in **System Settings → Privacy & Security** and use **Open Anyway** only if you trust this download. Do not disable Gatekeeper. Complete any Stash Keychain prompt yourself. [Apple’s first-launch instructions](https://support.apple.com/en-gb/102445).
 
-   ```sh
-   swift run StashChecks
-   ./scripts/build.sh
-   ```
+The downloaded build has passed automated checks on macOS 15, with local UI testing on Apple Silicon. Testing across all supported macOS versions and destination apps is ongoing. Intel users can [build from source](#build-from-source); Intel runtime behavior has not been verified.
 
-4. In Finder, open the repository's `build` folder and move **Stash.app** to **Applications**. Quit any older copy first. Keep a backup when replacing an existing installation.
-5. Open **Applications → Stash**. Keep only one copy running. Enable login launch and grant optional permissions only after installing it in its final location.
+### Install with Homebrew
 
-The build is locally **ad-hoc signed**, not Developer ID signed or notarized. CI artifacts are development builds too. Do not treat them as vetted consumer releases or disable macOS security protections to run an unknown download.
+With [Homebrew](https://brew.sh) installed:
 
-## Your first clip
+```sh
+brew install --cask MrJomadar3rdgeneration/tap/stash-clipboard
+```
 
-1. Leave Stash running in the menu bar.
-2. In another app, copy some harmless text or a link with **⌘C**.
-3. Press **⌘⇧V**, or click Stash's overlapping-squares icon in the top-right menu bar.
-4. Type a word in the search field. Use **↑ / ↓** to select a result.
-5. Press **Return** or click **Copy clip**.
-6. Switch to your destination app and press **⌘V**.
+This uses [our Homebrew tap](https://github.com/MrJomadar3rdgeneration/homebrew-tap), verifies the download checksum, and places **Stash.app** in **Applications** by default. The same architecture and first-launch requirements apply.
 
-By default, Stash restores the clip to your clipboard. It does **not** automatically type or paste into another app. Existing clipboard content from before launch is not imported; capture starts with subsequent changes.
+Use the complete command above: the unrelated [`stash` cask](https://formulae.brew.sh/cask/stash) in Homebrew installs a network tool.
 
-### Search and organize
+Already installed manually? Quit Stash and move the existing app to a backup folder if Homebrew reports a conflict, then retry. Your history stays in Library.
 
-- **All clips** shows your history. **Pinned** shows saved favorites. **Text / Links / Images / Files** filter by format. The entire sidebar row is clickable.
-- Search matches all entered words, ignoring case and accents, across saved text, file paths, source-app names, and format labels. Images do not have OCR search.
-- Click the pin button or press **⌘P** to keep a clip permanently. Pins survive automatic retention cleanup.
-- Use **Edit** on a text or link clip, make changes, then **Save changes**. This replaces its rich-format representations with plain text.
-- Delete one clip with its trash button or **⌘⌫**. Individual deletion has no undo.
-- The **…** menu above the list can clear unpinned history or delete everything, including pins. These actions ask for confirmation and cannot be undone. They do not clear the macOS system clipboard.
+## From copy to found in seconds
 
-### Customize the shortcut
+1. **Copy as usual.** Stash saves new clipboard content while it runs in the menu bar.
+2. **Open with ⌘⇧V.** Type a word, or choose a format from the sidebar.
+3. **Press Return to copy.** Switch to your destination app and press **⌘V**.
 
-Open **Settings → Open history**, click the shortcut button, and press your preferred combination. Include **⌘**, **⌃**, or **⌥** with a key. Press **Escape** to cancel recording and keep the previous shortcut. If another app owns the combination, choose a different one.
+![Searching for design instantly filters Stash to matching clips](docs/stash-search.png)
+*Search across text, links, file paths, source-app names, and format labels. Images do not have OCR search.*
 
-### Optional direct paste
+Pin the snippets you use often. Edit a saved text or link clip without pasting and copying it again; edits are saved as plain text. The whole sidebar row is clickable, so switching between **All clips**, **Pinned**, and format filters feels natural.
 
-Turn on **Settings → Paste directly into the previous app**, then use **Allow Accessibility…** to grant Stash access in macOS **Privacy & Security → Accessibility**.
+Prefer fewer steps? Enable **Paste directly into the previous app** in Settings and grant Accessibility access. Stash can then send ⌘V after restoring a clip. Basic capture, search, and copying do not need Accessibility. Some apps or protected fields may require manual paste.
 
-With this enabled, Return restores the clip, activates the previously used app, and sends **⌘V**. Without permission, Stash falls back to copying and shows a message. Protected fields and some applications may reject simulated paste; manual **⌘V** remains the fallback. Accessibility is not required for basic capture/search/copy. Stash itself does not request Screen Recording permission.
-
-### Launch at login and background behavior
-
-Enable **Settings → Launch at login**. Stash then starts quietly after you sign into macOS, including after restarting your Mac. It does not run before login or open the history window automatically at login.
-
-- Closing the **red window button** leaves menu-bar capture running.
-- **Pause capture** stops polling without deleting saved history; click **Resume capture** to continue.
-- Right-click the menu-bar icon for Open, Pause/Resume, and Quit.
-- **Quit Stash** stops the app until the next manual launch or login.
-- The history window has normal window ordering; other apps can appear in front of it.
-
-## Keyboard shortcuts
-
-These history actions apply while the main history window is focused, outside Settings or the inline editor.
+### Keyboard shortcuts
 
 | Shortcut | Action |
 | --- | --- |
-| **⌘⇧V** (customizable) | Open/hide history from any app |
-| **↑ / ↓** | Select the previous/next result |
-| **Return** | Copy the selection, or paste if direct paste is enabled |
-| **⇧Return** | Copy/paste the plain-text representation |
-| **⌘P** | Pin/unpin the selected clip |
+| **⌘⇧V** | Open or hide history; customizable in Settings |
+| **↑ / ↓** | Select a result |
+| **Return** | Copy the selected clip, or paste if direct paste is enabled |
+| **⇧Return** | Use the plain-text representation |
+| **⌘P** | Pin or unpin the selected clip |
 | **⌘⌫** | Delete the selected clip |
 | **Escape** | Hide history |
 | **⌘,** | Open Settings |
 | **⌘Q** | Quit Stash |
 
-## Privacy and storage
+History actions apply while the history window is focused, outside Settings or the editor. Closing the red window button leaves capture running; **Quit Stash** stops it.
 
-**Stash is not a password manager. Do not pin passwords, API keys, or recovery codes.**
+See the **[user guide](docs/USAGE.md)** for shortcut customization, direct paste, app exclusions, retention settings, and troubleshooting.
 
-The app skips clipboard content marked confidential or transient, plus content copied while an excluded app is in front. Several password managers are excluded by default. In **Settings → Privacy**, add one application bundle identifier per line, such as `com.example.MyApp`. Find an app's identifier in its bundle's `Contents/Info.plist` under `CFBundleIdentifier`.
+## Your history stays on your Mac
 
-Exclusions apply to future copies; delete previously captured content separately. Browser extensions can copy unmarked secrets under the browser's identity. Exclude the whole browser when that risk is unacceptable. Foreground-app attribution can be inaccurate during rapid switching or background automation.
+Stash has no network client or cloud sync. Saved clips and metadata are encrypted in `~/Library/Application Support/Stash/`; the key stays in your login Keychain. Preferences use the `com.stash.clipboard` domain.
 
-| Data | Location |
-| --- | --- |
-| Encrypted clips, metadata, and pin state | `~/Library/Application Support/Stash/*.stash` |
-| Encryption key | Your login Keychain; service `com.stash.clipboard.vault` |
-| Preferences | macOS UserDefaults domain `com.stash.clipboard`, managed under `~/Library/Preferences/` |
-| Runtime resources | Inside `Stash.app` |
+The app skips content marked confidential or transient and copies from excluded foreground apps. Several password managers are excluded by default. Unmarked secrets can still be captured, especially from browser extensions, so use a password manager for passwords and tokens instead of pinning them in Stash.
 
-Stash has no network client or cloud sync. Apple Universal Clipboard and your backup software operate independently. Encryption protects history files at rest, not an unlocked session from malicious software, screenshots, process-memory inspection, or an authorized Keychain reader. Deleting a file is not guaranteed secure erasure from SSDs or backups. Read [SECURITY.md](SECURITY.md).
+By default, Stash keeps **1,000 clips for 30 days**, with a **250 MB payload budget** for automatic cleanup. Pins are exempt. Individual snapshots over **20 MB** are skipped. File clips retain references to the original files, so moving or deleting those files can affect later pastes.
 
-### Retention and capacity
+Encryption protects stored files; it does not protect an unlocked session from malicious software. Backups and Apple Universal Clipboard operate independently. Read the [privacy details](docs/USAGE.md#privacy-and-storage) and [security policy](SECURITY.md).
 
-Defaults are **30 days** and **1,000 clips**. Settings support 500–10,000 clips, several age limits, or no age limit. Automatic cleanup removes unpinned history when age, count, or the **250 MB payload budget** is exceeded. Reducing limits applies immediately.
+## Designed to stay out of the way
 
-Pins are exempt and can exceed those limits. A single snapshot larger than **20 MB** is skipped. Disk usage may exceed the payload budget because encrypted JSON uses base64 and metadata. Identical copies are refreshed to the top, preserving the existing pin and original source metadata.
+Stash checks for changes every 0.5 seconds, or every second in Low Power Mode. Monitoring pauses during system/display sleep, inactive login sessions, and manual capture pause. It does not keep your Mac awake.
 
-File clips store references, not archived file contents. Moving or deleting the original file can break a later paste. Lazy file-promise providers cannot be saved and are skipped. Private app-specific formats may not replay outside their source app.
+One short local idle observation showed about **35 MB of memory** and **0.0% displayed CPU** at the tool's precision. That is not a battery-life benchmark: frequent copying, large images, and long histories use more resources. [Measurement details](ENERGY.md).
 
-## Troubleshooting
+Polling can miss very rapid clipboard overwrites. File promises and some app-specific formats cannot be reliably replayed. The [user guide](docs/USAGE.md#troubleshooting) covers these cases and other common issues.
 
-| Problem | What to check |
-| --- | --- |
-| Menu-bar icon missing | Open Stash from Applications or use the shortcut. Choose **Settings → Restore menu-bar icon**. On macOS versions offering it, enable Stash under **System Settings → Menu Bar → Allow in the Menu Bar**. A crowded menu bar can still hide items. |
-| Nothing new appears | Check that capture is not paused and the source app is not excluded. Copy new content in another app. Capture also needs the local vault to be unlocked. |
-| Keychain prompt after an update | Confirm that the prompt is for your installed Stash. Local ad-hoc signing can require reapproval after executable changes. Complete the prompt yourself. Never delete or replace the key to bypass it. |
-| “Vault unavailable” or empty history during unlock | Finish the Keychain prompt. If access was denied or an error persists, resolve the Keychain issue and restart Stash. Existing encrypted history is preserved. |
-| Shortcut unavailable | Record a different combination. Quit duplicate copies of Stash and check other apps' shortcut settings. |
-| Direct paste fails | Check Accessibility for the installed app, or use normal Copy followed by manual **⌘V**. Rebuilt binaries may need renewed permission. |
-| Copies missed during sleep or pause | Monitoring is suspended during system/display sleep and inactive login sessions. Resuming skips changes made while suspended. Polling can also miss rapid overwrites or be delayed by App Nap. |
-| History fails to save/delete | Check the displayed error and available disk space. Save failures pause capture. Undecryptable records are preserved and reported. No recovery/export UI is available yet. |
+## Updates and removal
 
-If you file a bug, use fictional content and redact screenshots. Never upload clipboard history, Keychain exports, or credentials.
-
-## Battery and memory
-
-Idle resource use should be evaluated against your workload. One local 31-second observation with three small clips showed approximately **35 MB RAM** and **0.0% displayed CPU** at the sampling tool's precision. This does not mean zero power use or establish a battery-per-hour percentage.
-
-Stash checks for clipboard changes about every **0.5 seconds**, or **1 second in Low Power Mode**, with timer tolerance to combine wake-ups. Polling stops while paused, asleep, or in an inactive login session. It holds no keep-awake assertion. Large images, long text, frequent copying, and large histories require more work; history is decoded into RAM. See [ENERGY.md](ENERGY.md) for measurement details and limits.
-
-## Development and verification
+For Homebrew installations, quit Stash and run:
 
 ```sh
+brew upgrade --cask MrJomadar3rdgeneration/tap/stash-clipboard
+```
+
+For manual installations, download the next release, quit Stash, and replace the app in Applications. There is no in-app automatic updater. Keep your history and its original Keychain key together; reinstalling the app cannot replace a missing key.
+
+To uninstall, disable **Launch at login**, quit Stash, then move the app to Trash—or run `brew uninstall --cask stash-clipboard` if installed with Homebrew. History remains in Library unless you explicitly clear it. Deletion has no undo, and backups may retain earlier copies.
+
+## Build from source
+
+You need **Swift 6+**, Xcode 16+ or compatible Apple Command Line Tools, and macOS 14+.
+
+```sh
+git clone https://github.com/MrJomadar3rdgeneration/stash.git
+cd stash
 swift run StashChecks
 ./scripts/build.sh
 ```
 
-The twelve checks exercise authenticated encryption, tamper/wrong-key rejection, retention, pins, search, fingerprints, and the actual production capture/replay path for HTML, RTF, links, PNG images, and multiple files. They also check plain-text replay, confidential content in later pasteboard items, exclusions, size limits, and preserving the clipboard after invalid replay requests. All clipboard checks use **isolated named pasteboards**, never your general clipboard.
+The app is created at `build/Stash.app`, ready to move into Applications. The script builds for your Mac's architecture and signs locally. No third-party package dependencies are downloaded.
 
-For fictional UI preview data, quit the normal app and run:
+The **12 automated checks** cover encryption, tamper rejection, retention, pins, search, and production capture/replay for text, HTML, RTF, links, images, and multiple files. Clipboard checks use isolated named pasteboards and leave your general clipboard untouched. GitHub CI also builds and packages the app.
 
-```sh
-open build/Stash.app --args --demo
-```
+For the sample interface shown above, quit the normal app and run `open build/Stash.app --args --demo`. Demo mode does not read your vault or capture clipboard changes; clicking Copy still changes the system clipboard. Quit demo mode before reopening normally.
 
-Demo mode does not read your vault or monitor the clipboard. Its copy buttons still change the system clipboard if clicked. Quit demo mode before opening normally.
+## Contribute
 
-The GitHub workflow builds, runs checks, and archives the app while preserving bundle metadata. Local validation is documented in [VALIDATION.md](VALIDATION.md); broader release gates are in [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md). Passing checks does not guarantee compatibility with every app or macOS version.
+Bug reports, thoughtful improvements, and compatibility testing are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use fictional clipboard content in reports and screenshots; never upload your history or credentials. Report security issues through [private vulnerability reporting](https://github.com/MrJomadar3rdgeneration/stash/security/advisories/new).
 
-## Updating, contributing, and removing Stash
-
-There is no automatic updater. For a local update, quit Stash, build and verify the new version, back up your current app, and replace it in Applications. Keep your vault and its original Keychain key together; reinstalling the app does not replace a missing key.
-
-To stop using Stash, first turn off **Launch at login**, then quit and move the app to Trash. History stays in Library unless you explicitly clear/delete it. If removing your saved data too, clear history from the app and review the data locations above; backups can retain previous copies.
-
-Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and the [changelog](CHANGELOG.md). Signed/notarized releases, older-system/Intel testing, and a trusted update channel remain future work; no unattended maintenance service is installed.
+[Changelog](CHANGELOG.md) · [Validation results](VALIDATION.md) · [Release checklist](RELEASE_CHECKLIST.md)
 
 ## License
 
-[MIT License](LICENSE) · Copyright © 2026 Stash contributors.
+[MIT](LICENSE) · Copyright © 2026 Stash contributors.

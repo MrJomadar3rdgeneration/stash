@@ -41,3 +41,11 @@ Not yet verified: direct paste with Accessibility, login launch, minimum macOS 1
 Final shortcut UI verification passed: accessibility activation opened the recorder, Escape cancelled while retaining the existing combination, and the restored global hotkey reopened history. Login launch remained enabled and the installed app was capturing new clips.
 
 Readiness: ready to share as a documented source beta. A generally recommended binary release still requires the compatibility and signing/notarization gates in RELEASE_CHECKLIST.md.
+
+## Download and README update
+
+- Published v0.3.0 with the exact Apple Silicon app ZIP from passing GitHub CI run 35316279260. Verified the ad-hoc signature, arm64 architecture, and SHA-256 against the release asset.
+- Published `MrJomadar3rdgeneration/homebrew-tap` with the `stash-clipboard` cask. Homebrew's existing `stash` cask is an unrelated network tool.
+- Homebrew style and fetch checks passed. Installation into an isolated project test folder succeeded; the installed bundle passed strict signature verification. The existing `/Applications/Stash.app` was not replaced.
+- Rewrote the README, added two actual-app screenshots using fictional demo content, and moved detailed instructions to `docs/USAGE.md`. Local documentation links passed verification.
+- Downloads remain ad-hoc signed and not notarized. The README states first-launch requirements and the limits of compatibility testing without prominent maturity labels.
