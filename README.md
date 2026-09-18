@@ -18,7 +18,6 @@
 
 Stash is a native macOS clipboard manager that remembers what you copy and makes it easy to find again. Save a useful link, recover a paragraph, or keep a reply template close at hand—all from a quiet menu-bar app, with your history encrypted on your Mac.
 
-No account. No analytics. No cloud service. Built with SwiftUI and AppKit, using Apple frameworks only.
 
 ![Stash showing clipboard history, format filters, and a text preview](docs/stash-overview.png)
 *The real Stash interface, shown with fictional sample clips.*
