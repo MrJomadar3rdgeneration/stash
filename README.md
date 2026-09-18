@@ -5,8 +5,7 @@
 <p align="center"><strong>Your clipboard, with a memory.</strong></p>
 <p align="center">Copy something. Find it later. Keep moving.</p>
 <p align="center">
-  <a href="https://github.com/MrJomadar3rdgeneration/stash/releases/latest">Download for Mac</a> ·
-  <a href="#install-with-homebrew">Homebrew</a> ·
+  <a href="#install-from-source">Install</a> ·
   <a href="docs/USAGE.md">User guide</a> ·
   <a href="https://github.com/MrJomadar3rdgeneration/stash/issues">Report a bug</a>
 </p>
@@ -35,30 +34,21 @@ Stash is a native macOS clipboard manager that remembers what you copy and makes
 | Everyday controls | Pause capture, exclude apps, delete individual clips, or clear history. |
 | Ready after login | Starts quietly when you sign into your Mac, if you enable Launch at login. |
 
-## Download and install
+## Install from source
 
-### Download the app
+Prebuilt downloads are temporarily unavailable while Developer ID signing and Apple notarization are being configured. Building locally avoids the unidentified-developer warning because the app is created on your own Mac.
 
-**[Download Stash for Apple Silicon](https://github.com/MrJomadar3rdgeneration/stash/releases/download/v0.3.0/Stash-0.3.0-arm64.zip)** · [All releases](https://github.com/MrJomadar3rdgeneration/stash/releases)
-
-1. Download and unzip the app. The download supports **Apple Silicon Macs (M1 or later), macOS 14+**.
-2. Move **Stash.app** into **Applications**. Quit an older copy before replacing it.
-3. Open Stash, then enable **Settings → Launch at login** if you want it available after every restart.
-
-**First launch:** the download is ad-hoc signed, not Developer ID signed or notarized. macOS may require your approval before opening it. If it is blocked, review the app in **System Settings → Privacy & Security** and use **Open Anyway**. Complete any Stash Keychain prompt yourself.
-
-
-### Install with Homebrew
-
-With [Homebrew](https://brew.sh) installed:
+You need **macOS 14 or later** and **Swift 6 or later**, provided by Xcode 16+ or compatible Apple Command Line Tools. Install the tools with `xcode-select --install` if needed, then run:
 
 ```sh
-brew install --cask MrJomadar3rdgeneration/tap/stash-clipboard
+git clone https://github.com/MrJomadar3rdgeneration/stash.git
+cd stash
+./scripts/install.sh
 ```
 
-This uses [our Homebrew tap](https://github.com/MrJomadar3rdgeneration/homebrew-tap), verifies the download checksum, and places **Stash.app** in **Applications** by default. The same architecture and first-launch requirements apply.
+The installer runs Stash's checks, builds the app for your Mac, verifies the bundle, and copies it to `/Applications/Stash.app`. It never downloads third-party packages. If `/Applications` requires administrator access, macOS asks for your password only for the final copy.
 
-Use the complete command above: the unrelated [`stash` cask](https://formulae.brew.sh/cask/stash) in Homebrew installs a network tool.
+Open Stash from Applications, then enable **Settings → Launch at login** if you want it available after every restart. Keep the cloned folder when you want to build an update later.
 
 ## From copy to found in seconds
 
@@ -107,15 +97,16 @@ Stash checks for changes every 0.5 seconds, or every second in Low Power Mode. M
 
 ## Updates and removal
 
-For Homebrew installations, quit Stash and run:
+To update, quit Stash and return to the cloned repository:
 
 ```sh
-brew upgrade --cask MrJomadar3rdgeneration/tap/stash-clipboard
+git pull --ff-only
+./scripts/install.sh --replace
 ```
 
-For manual installations, download the next release, quit Stash, and replace the app in Applications. There is no in-app automatic updater. Keep your history and its original Keychain key together; reinstalling the app cannot replace a missing key.
+There is no in-app automatic updater. The installer keeps the previous app in Trash when replacing it. Keep your history and its original Keychain key together; rebuilding the app cannot replace a missing key.
 
-To uninstall, disable **Launch at login**, quit Stash, then move the app to Trash—or run `brew uninstall --cask stash-clipboard` if installed with Homebrew. History remains in Library unless you explicitly clear it. Deletion has no undo, and backups may retain earlier copies.
+To uninstall, disable **Launch at login**, quit Stash, then move the app to Trash. History remains in Library unless you explicitly clear it. Deletion has no undo, and backups may retain earlier copies.
 
 ## Build from source
 
@@ -137,7 +128,7 @@ The **12 automated checks** cover encryption, tamper rejection, retention, pins,
 
 Bug reports, thoughtful improvements, and compatibility testing are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use fictional clipboard content in reports and screenshots; never upload your history or credentials. Report security issues through [private vulnerability reporting](https://github.com/MrJomadar3rdgeneration/stash/security/advisories/new).
 
-[Changelog](CHANGELOG.md) · [Validation results](VALIDATION.md) · [Release checklist](RELEASE_CHECKLIST.md)
+[Changelog](CHANGELOG.md)
 
 ## License
 
