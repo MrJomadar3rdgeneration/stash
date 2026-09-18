@@ -95,19 +95,15 @@ See the **[user guide](docs/USAGE.md)** for shortcut customization, direct paste
 
 Stash has no network client or cloud sync. Saved clips and metadata are encrypted in `~/Library/Application Support/Stash/`; the key stays in your login Keychain. Preferences use the `com.stash.clipboard` domain.
 
-The app skips content marked confidential or transient and copies from excluded foreground apps. Several password managers are excluded by default. Unmarked secrets can still be captured, especially from browser extensions, so use a password manager for passwords and tokens instead of pinning them in Stash.
+The app skips content marked confidential or transient and copies from excluded foreground apps. Several password managers are excluded by default.
 
 By default, Stash keeps **1,000 clips for 30 days**, with a **250 MB payload budget** for automatic cleanup. Pins are exempt. Individual snapshots over **20 MB** are skipped. File clips retain references to the original files, so moving or deleting those files can affect later pastes.
 
-Encryption protects stored files; it does not protect an unlocked session from malicious software. Backups and Apple Universal Clipboard operate independently. Read the [privacy details](docs/USAGE.md#privacy-and-storage) and [security policy](SECURITY.md).
+Encryption protects stored files. Read the [privacy details](docs/USAGE.md#privacy-and-storage) and [security policy](SECURITY.md).
 
 ## Designed to stay out of the way
 
 Stash checks for changes every 0.5 seconds, or every second in Low Power Mode. Monitoring pauses during system/display sleep, inactive login sessions, and manual capture pause. It does not keep your Mac awake.
-
-One short local idle observation showed about **35 MB of memory** and **0.0% displayed CPU** at the tool's precision. That is not a battery-life benchmark: frequent copying, large images, and long histories use more resources. [Measurement details](ENERGY.md).
-
-Polling can miss very rapid clipboard overwrites. File promises and some app-specific formats cannot be reliably replayed. The [user guide](docs/USAGE.md#troubleshooting) covers these cases and other common issues.
 
 ## Updates and removal
 
@@ -136,7 +132,6 @@ The app is created at `build/Stash.app`, ready to move into Applications. The sc
 
 The **12 automated checks** cover encryption, tamper rejection, retention, pins, search, and production capture/replay for text, HTML, RTF, links, images, and multiple files. Clipboard checks use isolated named pasteboards and leave your general clipboard untouched. GitHub CI also builds and packages the app.
 
-For the sample interface shown above, quit the normal app and run `open build/Stash.app --args --demo`. Demo mode does not read your vault or capture clipboard changes; clicking Copy still changes the system clipboard. Quit demo mode before reopening normally.
 
 ## Contribute
 
