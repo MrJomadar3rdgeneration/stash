@@ -60,11 +60,8 @@ These history actions apply while the main history window is focused, outside Se
 
 ## Privacy and storage
 
-**Stash is not a password manager. Do not pin passwords, API keys, or recovery codes.**
 
-The app skips clipboard content marked confidential or transient, plus content copied while an excluded app is in front. Several password managers are excluded by default. In **Settings → Privacy**, add one application bundle identifier per line, such as `com.example.MyApp`. Find an app's identifier in its bundle's `Contents/Info.plist` under `CFBundleIdentifier`.
-
-Exclusions apply to future copies; delete previously captured content separately. Browser extensions can copy unmarked secrets under the browser's identity. Exclude the whole browser when that risk is unacceptable. Foreground-app attribution can be inaccurate during rapid switching or background automation.
+The app skips clipboard content marked confidential or transient, plus content copied while an excluded app is in front. Several password managers are excluded by default. 
 
 | Data | Location |
 | --- | --- |
