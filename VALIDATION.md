@@ -34,7 +34,9 @@ Not yet verified: direct paste with Accessibility, login launch, minimum macOS 1
 - Twelve checks passed against shared production capture/replay code. Added real PNG round trips, RTF/HTML previews, plain-text replay, link classification, second-item confidential markers, excluded sources, oversized records, and preserving the clipboard after invalid replay requests.
 - MIT license was selected by the owner. Added contribution/security documents, a privacy-aware issue template, credential/history ignore rules, explicit release gates, and ZIP packaging for CI bundles.
 - A pattern scan of the publishable source files found no matching private-key, GitHub-token, AWS-key, or API-key patterns. Runtime history and Keychain data remain outside the repository. This is a limited pattern scan, not proof against every possible secret.
-- No GitHub repository was created, no remote configured, and no files uploaded. CI has not been exercised on GitHub.
+- Published the MIT source beta at [MrJomadar3rdgeneration/stash](https://github.com/MrJomadar3rdgeneration/stash). Runtime data and local credentials were excluded.
+- [GitHub CI run 35316279260](https://github.com/MrJomadar3rdgeneration/stash/actions/runs/35316279260) passed on the macOS 15 runner: production checks, release app build, ZIP packaging, and artifact upload. GitHub reported a non-blocking Node 20 deprecation notice for the v4 workflow actions, which ran using Node 24.
+- Enabled and verified GitHub private vulnerability reporting. README local documentation links were checked successfully.
 
 Final shortcut UI verification passed: accessibility activation opened the recorder, Escape cancelled while retaining the existing combination, and the restored global hotkey reopened history. Login launch remained enabled and the installed app was capturing new clips.
 

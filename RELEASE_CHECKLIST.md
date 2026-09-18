@@ -14,6 +14,7 @@ Before uploading source:
 - [x] Run the local checks and record results in VALIDATION.md.
 - [x] Reporter confirmed the menu-bar icon is visible after updating.
 - [x] Prepare the public source repository at `MrJomadar3rdgeneration/stash` under MIT.
+- [x] Publish source, pass GitHub CI, and enable private vulnerability reporting.
 
 Before recommending a binary release to non-developers:
 
@@ -24,6 +25,6 @@ Before recommending a binary release to non-developers:
 - [ ] Exercise large histories and error paths: full disk, locked Keychain, damaged vault records.
 - [ ] Configure Developer ID signing, hardened runtime, notarization, and stable update signing.
 - [ ] If automatic updates are desired, configure a trusted update feed and signed releases. None exists today.
-- [ ] Run GitHub CI, enable private vulnerability reporting, and agree who maintains releases.
+- [ ] Agree who maintains releases and the support/response policy.
 
 Never include the user's history, Keychain, local preferences, or personal screenshots in a release or bug report.
