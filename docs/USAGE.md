@@ -70,7 +70,7 @@ The app skips clipboard content marked confidential or transient, plus content c
 | Preferences | macOS UserDefaults domain `com.stash.clipboard`, managed under `~/Library/Preferences/` |
 | Runtime resources | Inside `Stash.app` |
 
-Stash has no network client or cloud sync. Apple Universal Clipboard and your backup software operate independently. Encryption protects history files at rest, not an unlocked session from malicious software, screenshots, process-memory inspection, or an authorized Keychain reader. Deleting a file is not guaranteed secure erasure from SSDs or backups. Read [SECURITY.md](../SECURITY.md).
+Stash has no network client or cloud sync. Apple Universal Clipboard and your backup software operate independently. Read [SECURITY.md](../SECURITY.md).
 
 ### Retention and capacity
 
