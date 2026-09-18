@@ -1,0 +1,21 @@
+name: macOS checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test production clipboard and storage code
+        run: swift run StashChecks
+      - name: Build app
+        run: ./scripts/build.sh
+      - name: Archive app preserving bundle metadata
+        run: ditto -c -k --sequesterRsrc --keepParent build/Stash.app build/Stash-macOS.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Stash-development-build
+          path: build/Stash-macOS.zip

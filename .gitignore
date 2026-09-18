@@ -1,0 +1,15 @@
+.build/
+build/
+.DS_Store
+.swiftpm/
+
+# Local history and credentials must never be published.
+*.stash
+*.p12
+*.pfx
+*.mobileprovision
+*.key
+*.pem
+.env
+.env.*
+!.env.example
