@@ -60,8 +60,6 @@ This uses [our Homebrew tap](https://github.com/MrJomadar3rdgeneration/homebrew-
 
 Use the complete command above: the unrelated [`stash` cask](https://formulae.brew.sh/cask/stash) in Homebrew installs a network tool.
 
-Already installed manually? Quit Stash and move the existing app to a backup folder if Homebrew reports a conflict, then retry. Your history stays in Library.
-
 ## From copy to found in seconds
 
 1. **Copy as usual.** Stash saves new clipboard content while it runs in the menu bar.
