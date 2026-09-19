@@ -7,7 +7,8 @@
 <p align="center">
   <a href="#install-from-source">Install</a> ·
   <a href="docs/USAGE.md">User guide</a> ·
-  <a href="https://github.com/MrJomadar3rdgeneration/stash/issues">Report a bug</a>
+  <a href="https://github.com/MrJomadar3rdgeneration/stash/issues">Report a bug</a> ·
+  <a href="https://github.com/MrJomadar3rdgeneration/stash/discussions">Share feedback</a>
 </p>
 <p align="center">
   <a href="https://github.com/MrJomadar3rdgeneration/stash/actions/workflows/ci.yml"><img src="https://github.com/MrJomadar3rdgeneration/stash/actions/workflows/ci.yml/badge.svg" alt="macOS build and checks"></a>
@@ -34,11 +35,17 @@ Stash is a native macOS clipboard manager that remembers what you copy and makes
 | Everyday controls | Pause capture, exclude apps, delete individual clips, or clear history. |
 | Ready after login | Starts quietly when you sign into your Mac, if you enable Launch at login. |
 
+## Current distribution status
+
+Stash is free and open source. The supported installation method currently builds Stash from source on your own Mac. We do not distribute unsigned prebuilt binaries or ask users to bypass macOS Gatekeeper.
+
+A normal downloadable Mac build requires a Developer ID certificate and Apple notarization through the **$99/year Apple Developer Program**. Once that cost is funded, Stash will provide signed and notarized downloads while remaining free and open source. Until then, the source installer below is fully supported.
+
 ## Install from source
 
-Prebuilt downloads are temporarily unavailable while Developer ID signing and Apple notarization are being configured. Building locally avoids the unidentified-developer warning because the app is created on your own Mac.
+Building locally avoids the unidentified-developer warning because the app is created on your own Mac.
 
-You need **macOS 14 or later** and **Swift 6 or later**, provided by Xcode 16+ or compatible Apple Command Line Tools. Install the tools with `xcode-select --install` if needed, then run:
+You need **macOS 14.5 or later** and **Swift 6 or later**, provided by Xcode 16+ or compatible Apple Command Line Tools. Install the tools with `xcode-select --install` if needed, then run:
 
 ```sh
 git clone https://github.com/MrJomadar3rdgeneration/stash.git
@@ -110,7 +117,7 @@ To uninstall, disable **Launch at login**, quit Stash, then move the app to Tras
 
 ## Build from source
 
-You need **Swift 6+**, Xcode 16+ or compatible Apple Command Line Tools, and macOS 14+.
+You need **Swift 6+**, Xcode 16+ or compatible Apple Command Line Tools, and macOS 14.5+.
 
 ```sh
 git clone https://github.com/MrJomadar3rdgeneration/stash.git
@@ -126,7 +133,15 @@ The **12 automated checks** cover encryption, tamper rejection, retention, pins,
 
 ## Contribute
 
-Bug reports, thoughtful improvements, and compatibility testing are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use fictional clipboard content in reports and screenshots; never upload your history or credentials. Report security issues through [private vulnerability reporting](https://github.com/MrJomadar3rdgeneration/stash/security/advisories/new).
+Bug reports, feature ideas, general feedback, thoughtful improvements, and compatibility testing are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md), open an [issue](https://github.com/MrJomadar3rdgeneration/stash/issues/new/choose), or join [Discussions](https://github.com/MrJomadar3rdgeneration/stash/discussions). Use fictional clipboard content in reports and screenshots; never upload your history or credentials. Report security issues through [private vulnerability reporting](https://github.com/MrJomadar3rdgeneration/stash/security/advisories/new).
+
+## Roadmap
+
+The current priorities are signed and notarized downloads, smoother updates, broader Intel and macOS compatibility testing, and careful accessibility and clipboard-format improvements. Roadmap items are guided by real-world feedback; they are plans, not promised dates. Share ideas in [Discussions](https://github.com/MrJomadar3rdgeneration/stash/discussions) or use the feature-request template.
+
+## Optional support
+
+Stash will remain free and open source. Community support is optional, and the first funding milestone is simply covering the **$99/year Apple Developer Program membership** needed for signed and notarized builds. See [funding details](docs/FUNDING.md).
 
 [Changelog](CHANGELOG.md)
 

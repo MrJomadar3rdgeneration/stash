@@ -1,0 +1,23 @@
+name: General feedback
+description: Share usability feedback or an experience that is not a bug report.
+body:
+  - type: markdown
+    attributes:
+      value: "Thank you for trying Stash. Never include passwords, API keys, personal clipboard history, or unredacted private screenshots."
+  - type: textarea
+    id: experience
+    attributes:
+      label: What was your experience?
+      description: Tell us what felt clear, confusing, helpful, or frustrating.
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Your workflow
+      description: Which apps and clipboard formats were involved? Use fictional content in examples.
+  - type: input
+    id: environment
+    attributes:
+      label: macOS version and Mac architecture
+      placeholder: macOS 15.6, Apple Silicon

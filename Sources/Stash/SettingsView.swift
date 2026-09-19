@@ -65,7 +65,7 @@ struct SettingsView: View {
                     Text("↑ ↓ Select · Return Copy/Paste · ⇧Return Plain text\n⌘P Pin · ⌘⌫ Delete · Escape Hide").font(.system(size: 11, design: .monospaced))
                 }
             }.formStyle(.grouped)
-            HStack { Text("STASH  /  0.3.0").font(.system(size: 9, weight: .medium)).tracking(1.4).foregroundStyle(muted); Spacer(); Button("Quit Stash") { delegate.quit() }.buttonStyle(.plain).foregroundStyle(muted).font(.caption) }
+            HStack { Text("STASH  /  0.3.1").font(.system(size: 9, weight: .medium)).tracking(1.4).foregroundStyle(muted); Spacer(); Button("Quit Stash") { delegate.quit() }.buttonStyle(.plain).foregroundStyle(muted).font(.caption) }
         }.padding(25).frame(width: 560, height: 720).background(canvas).preferredColorScheme(.dark)
             .onAppear { refreshLoginStatus() }
             .onDisappear {

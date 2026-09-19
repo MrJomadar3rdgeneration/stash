@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest an improvement to Stash.
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping shape Stash. Describe the workflow you want to improve without including private clipboard content."
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Tell us what you are trying to do and where the current workflow gets in the way.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like Stash to do?
+      description: A concrete example is useful, but a polished design is not required.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Include relevant apps, clipboard formats, macOS version, or accessibility needs. Use fictional data in examples and screenshots.

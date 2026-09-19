@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 — 2026-09-19
+
+- Added a supported source installer and documented the current distribution and signing status.
+- Added issue templates, community feedback paths, funding information, and a public roadmap.
+- Release packaging now requires Developer ID signing and successful Apple notarization.
+
 ## 0.3.0 — 2026-09-18
 
 - Sidebar navigation and utility actions have full-width rectangular click targets.
